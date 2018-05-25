@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fernando.aeroproject.MetodoPago">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/paypal"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_above="@+id/linearLayout"
+            android:layout_marginStart="76dp"
+            android:layout_toEndOf="@+id/visa"
+            android:src="@drawable/paypal" />
+
+        <ImageButton
+            android:id="@+id/amex"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_above="@+id/linearLayout"
+            android:layout_toEndOf="@+id/visa"
+            android:src="@drawable/amex" />
+
+        <ImageButton
+            android:id="@+id/visa"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_above="@+id/linearLayout"
+            android:layout_toEndOf="@+id/mastercard"
+            android:src="@drawable/visa" />
+
+        <ImageButton
+            android:id="@+id/mastercard"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="71dp"
+            android:src="@drawable/mastercard" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/mastercard"
+            android:layout_marginTop="21dp"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre (a como sale en la tarjeta)" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número de tarjeta" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de Expiración" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_toEndOf="@+id/spinner2"
+                    android:layout_toRightOf="@+id/spinner2" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
+                    android:layout_alignBottom="@+id/spinner"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/spinner"
+                    android:layout_marginTop="11dp"
+                    android:text="Código de seguridad (3 números atras, AMEX 4 adelante)" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/imageView"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView3"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_toEndOf="@+id/editText2"
+                    android:layout_toRightOf="@+id/editText2"
+                    app:srcCompat="@drawable/codigo" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/textView3"
+                    android:layout_alignRight="@+id/textView3"
+                    android:layout_alignTop="@+id/imageView"
+                    app:srcCompat="@drawable/amexseguridad" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toEndOf="@+id/spinner2"
+                    android:layout_toRightOf="@+id/spinner2"
+                    android:text="Finalizar" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="100dp"
+                    android:layout_height="130dp"
+                    android:layout_alignBaseline="@+id/button"
+                    android:layout_alignBottom="@+id/button"
+                    android:layout_alignLeft="@+id/imageView"
+                    android:layout_alignStart="@+id/imageView"
+                    android:text="Cancelar" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
