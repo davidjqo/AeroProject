@@ -95,7 +95,6 @@ public class CuentaFragment extends Fragment {
             }
         });
 
-        ingresar = view.findViewById(R.id.entrarbtn);
         ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

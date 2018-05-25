@@ -28,6 +28,12 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.fernando.aeroproject.CrearCuentaActivity" />
+        <activity android:name="com.example.fernando.aeroproject.MetodoPago" />
+        <activity android:name="com.example.fernando.aeroproject.AdministradorActivity" />
+        <activity android:name="com.example.fernando.aeroproject.TipoAviones" />
+        <activity android:name="com.example.fernando.aeroproject.Rutas" />
+        <activity android:name="com.example.fernando.aeroproject.AgregarAviones" />
+        <activity android:name="com.example.fernando.aeroproject.Horarios" />
 
         <meta-data
             android:name="android.support.VERSION"
