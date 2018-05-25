@@ -1,0 +1,201 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fernando.aeroproject.VuelosFragment"
+    android:background="@android:color/background_light">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/origentxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/idavueltarbutton"
+            android:layout_below="@+id/idavueltarbutton"
+            android:layout_marginTop="23dp"
+            android:text="Origen"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="Buscar vuelos"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/idavueltarbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="14dp"
+            android:text="Ida y vuelta" />
+
+        <RadioButton
+            android:id="@+id/idarbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/idavueltarbutton"
+            android:layout_alignBottom="@+id/idavueltarbutton"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="66dp"
+            android:text="Solo ida" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/idavueltarbutton"
+            android:layout_below="@+id/idavueltarbutton"
+            android:layout_marginTop="23dp"
+            android:text="Origen"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editText"
+            android:layout_toEndOf="@+id/editText"
+            android:text="Destino"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText"
+            android:layout_toEndOf="@+id/editText"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/origentxt"
+            android:layout_below="@+id/editText"
+            android:layout_marginTop="11dp"
+            android:text=">"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/dateida"
+            android:layout_below="@+id/dateida"
+            android:layout_marginTop="13dp"
+            android:text="Pasajeros"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView6"
+            android:layout_alignStart="@+id/textView6"
+            android:layout_below="@+id/textView6"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/buscarbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editText5"
+            android:layout_marginStart="19dp"
+            android:layout_toEndOf="@+id/idavueltarbutton"
+            android:text="Buscar" />
+
+        <TextView
+            android:id="@+id/dateida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView5"
+            android:layout_below="@+id/textView5"
+            android:layout_marginTop="21dp"
+            android:hint="@string/ida"/>
+
+        <TextView
+            android:id="@+id/datevuelta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/idarbutton"
+            android:layout_below="@+id/textView9"
+            android:ems="10"
+            android:hint="@string/vuelta"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/descuentos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buscarbtn"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:text="Descuentos en vuelos"
+            android:textSize="20dp" />
+        
+        <!-- ViewPager para mostrar los descuentos en vuelos con imagenes. -->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descuentos"
+            ></android.support.v4.view.ViewPager>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView5"
+            android:layout_marginStart="38dp"
+            android:text="Ida" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView10"
+            android:layout_below="@+id/textView5"
+            android:text="Vuelta" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText"
+            android:layout_centerHorizontal="true"
+            android:text="@string/fechadeviaje"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>
