@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fernando.aeroproject.Rutas">
+
+    <TableLayout
+        android:id="@+id/tablerutas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TableRow>
+        <TextView
+            android:text="Identif. "
+            android:textSize="33dp"
+            android:textColor="#000"
+            android:layout_gravity="center"/>
+        <TextView
+            android:text=" Ruta "
+            android:textSize="33dp"
+            android:textColor="#000"
+            android:layout_gravity="center"/>
+        <TextView
+            android:text=" Duración "
+            android:textSize="33dp"
+            android:textColor="#000"
+            android:layout_gravity="center"/>
+
+    </TableRow>
+    </TableLayout>
+</RelativeLayout>

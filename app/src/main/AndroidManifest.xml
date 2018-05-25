@@ -20,7 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".CrearCuentaActivity" />
-        <activity android:name=".MetodoPago"></activity>
+        <activity android:name=".MetodoPago" />
+        <activity android:name=".AdministradorActivity" />
+        <activity android:name=".TipoAviones" />
+        <activity android:name=".Rutas" />
+        <activity android:name=".AgregarAviones" />
+        <activity android:name=".Horarios"></activity>
     </application>
 
 </manifest>

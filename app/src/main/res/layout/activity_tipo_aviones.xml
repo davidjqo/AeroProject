@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fernando.aeroproject.TipoAviones">
+
+
+    <TableLayout
+        android:id="@+id/tablelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+            <TextView
+                android:text="Identif. "
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_gravity="center"/>
+            <TextView
+            android:text=" Año "
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:layout_gravity="center"/>
+            <TextView
+                android:text=" Modelo "
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_gravity="center"/>
+            <TextView
+                android:text=" Marca "
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_gravity="center"/>
+            <TextView
+                android:text=" Pasajeros "
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_gravity="center"/>
+            <TextView
+                android:text=" N.Filas "
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_gravity="center"/>
+            <TextView
+                android:text="AsientXFila"
+                android:textSize="15dp"
+                android:textColor="#000"
+                android:layout_gravity="center"/>
+        </TableRow>
+
+
+
+    </TableLayout>
+</RelativeLayout>
