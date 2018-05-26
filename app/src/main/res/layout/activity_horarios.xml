@@ -49,21 +49,13 @@
                 android:layout_marginBottom="20dp"
                 android:hint="Hora"
                 />
-
+            
             <EditText
-                android:id="@+id/horario3"
+                android:id="@+id/ruta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Minutos"
-                 />
-
-            <EditText
-                android:id="@+id/horallegada"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:hint="Hora de llegada"
+                android:hint="Ruta"
                 />
             <EditText
                 android:id="@+id/precio"
