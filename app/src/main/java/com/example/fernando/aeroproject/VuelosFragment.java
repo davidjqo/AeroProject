@@ -41,7 +41,7 @@ public class VuelosFragment extends Fragment {
     private Button buscar;
     private RadioButton idaVuelta, ida;
     private TextView salida, destino, cantidad;
-    private String dia, sali, dest;
+    private String dia, vuelta, sali, dest;
     private int cant;
     Coneccion coneccion = new Coneccion();
     VuelosFragment.Tarea tarea;
@@ -178,7 +178,7 @@ public class VuelosFragment extends Fragment {
                 Context context = getActivity();
 
                 if (idaVuelta.isChecked()) {
-                    //
+                    buscarVueloIdaVuelta();
                 }
                 if (ida.isChecked()) {
                     buscarVueloIda();
@@ -194,12 +194,22 @@ public class VuelosFragment extends Fragment {
     }
 
     public void buscarVueloIda() {
-        inicializar();
+        inicializarIda();
         if (!validar()) {
             Toast.makeText(getActivity(), "No se pudo buscar", Toast.LENGTH_SHORT).show();
         } else {
             tarea = new Tarea();
             tarea.execute("buscarVueloIda", dia, sali, dest, String.valueOf(cant));
+        }
+    }
+
+    public void buscarVueloIdaVuelta() {
+        inicializarIdaVuelta();
+        if (!validar()) {
+            Toast.makeText(getActivity(), "No se pudo buscar", Toast.LENGTH_SHORT).show();
+        } else {
+            tarea = new Tarea();
+            tarea.execute("buscarVueloIda", dia, vuelta, sali, dest, String.valueOf(cant));
         }
     }
 
@@ -220,8 +230,16 @@ public class VuelosFragment extends Fragment {
         return valid;
     }
 
-    public void inicializar() {
+    public void inicializarIda() {
         dia = fechaida.getText().toString().trim();
+        sali = salida.getText().toString().trim();
+        dest = destino.getText().toString().trim();
+        cant = Integer.parseInt(cantidad.getText().toString().trim());
+    }
+
+    public void inicializarIdaVuelta() {
+        dia = fechaida.getText().toString().trim();
+        vuelta = fechavuelta.getText().toString().trim();
         sali = salida.getText().toString().trim();
         dest = destino.getText().toString().trim();
         cant = Integer.parseInt(cantidad.getText().toString().trim());

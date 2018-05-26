@@ -44,6 +44,7 @@ public class CuentaFragment extends Fragment {
     private String user, password;
     Coneccion coneccion = new Coneccion();
     CuentaFragment.Tarea tarea;
+    public boolean bandera;
 
     public CuentaFragment() {
         // Required empty public constructor
@@ -111,7 +112,7 @@ public class CuentaFragment extends Fragment {
             Toast.makeText(getActivity(), "No se ha podido iniciar la sesión", Toast.LENGTH_SHORT).show();
         } else {
             tarea = new Tarea();
-            tarea.execute("inicarSesion", user, password);
+            tarea.execute("iniciarSesion", user, password);
         }
     }
 
@@ -220,6 +221,9 @@ public class CuentaFragment extends Fragment {
             switch (accion) {
                 case "iniciarSesion":
                     Toast.makeText(getActivity(), "Se ha iniciado la sesión", Toast.LENGTH_SHORT).show();
+                    bandera = false;
+                    Intent admin = new Intent(getActivity(), AdministradorActivity.class);
+                    startActivity(admin);
                     break;
             }
             progressDialog.dismiss();

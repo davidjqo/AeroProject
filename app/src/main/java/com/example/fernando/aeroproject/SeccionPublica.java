@@ -1,5 +1,7 @@
 package com.example.fernando.aeroproject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +10,12 @@ import android.view.View;
 import android.widget.Button;
 
 public class SeccionPublica extends AppCompatActivity implements View.OnClickListener, AeroFragment.OnFragmentInteractionListener, VuelosFragment.OnFragmentInteractionListener,
-        CuentaFragment.OnFragmentInteractionListener{
+        CuentaFragment.OnFragmentInteractionListener {
 
     Button aero, vuelos, contactenos, cuenta;
+    private Context context = this;
+    private CuentaFragment cuentafrag = new CuentaFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,21 +25,21 @@ public class SeccionPublica extends AppCompatActivity implements View.OnClickLis
         VuelosFragment fragmento1 = new VuelosFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.contenedor, fragmento1).commit();
 
-        aero = (Button)findViewById(R.id.aero);
-        vuelos = (Button)findViewById(R.id.vuelos);
-        contactenos = (Button)findViewById(R.id.contactenos);
-        cuenta = (Button)findViewById(R.id.cuenta);
+        aero = (Button) findViewById(R.id.aero);
+        vuelos = (Button) findViewById(R.id.vuelos);
+        contactenos = (Button) findViewById(R.id.contactenos);
+        cuenta = (Button) findViewById(R.id.cuenta);
 
         aero.setOnClickListener(this);
         vuelos.setOnClickListener(this);
         contactenos.setOnClickListener(this);
         cuenta.setOnClickListener(this);
-
     }
-//Al dar click a un boton, que salga el fragmento según boton.
+
+    //Al dar click a un boton, que salga el fragmento según boton.
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.aero:
                 AeroFragment aerofrag = new AeroFragment();
                 FragmentTransaction trasicion1 = getSupportFragmentManager().beginTransaction();
@@ -50,10 +55,14 @@ public class SeccionPublica extends AppCompatActivity implements View.OnClickLis
             case R.id.contactenos:
                 break;
             case R.id.cuenta:
-                CuentaFragment cuentafrag = new CuentaFragment();
-                FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
-                transaction3.replace(R.id.contenedor, cuentafrag);
-                transaction3.commit();
+                if (cuentafrag.bandera = true) {
+                    FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
+                    transaction3.replace(R.id.contenedor, cuentafrag);
+                    transaction3.commit();
+                } else {
+                    Intent admin = new Intent(context, AdministradorActivity.class);
+                    startActivity(admin);
+                }
                 break;
         }
     }

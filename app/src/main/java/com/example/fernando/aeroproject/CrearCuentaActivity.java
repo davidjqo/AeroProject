@@ -40,7 +40,6 @@ public class CrearCuentaActivity extends AppCompatActivity {
         confirmarcontrasenatxt = (EditText) findViewById(R.id.telefono);
         regbtn = (Button) findViewById(R.id.registrobtn);
         regbtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 registrarse();

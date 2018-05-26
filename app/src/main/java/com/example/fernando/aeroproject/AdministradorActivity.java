@@ -15,41 +15,41 @@ public class AdministradorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrador);
 
-        taviones = (Button)findViewById(R.id.tipoaviones);
-        rutas = (Button)findViewById(R.id.rutas);
-        horarios = (Button)findViewById(R.id.horarios);
-        aviones = (Button)findViewById(R.id.aviones);
+        taviones = (Button) findViewById(R.id.tipoaviones);
+        rutas = (Button) findViewById(R.id.rutas);
+        horarios = (Button) findViewById(R.id.horarios);
+        aviones = (Button) findViewById(R.id.aviones);
 
         taviones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(AdministradorActivity.this, TipoAviones.class);
-            startActivity(intent);
+                Intent intent = new Intent(AdministradorActivity.this, TipoAviones.class);
+                startActivity(intent);
             }
         });
 
         rutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent2 = new Intent(AdministradorActivity.this, Rutas.class);
-            startActivity(intent2);
+                Intent intent2 = new Intent(AdministradorActivity.this, Rutas.class);
+                startActivity(intent2);
             }
         });
         horarios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent3 = new Intent(AdministradorActivity.this, Horarios.class);
+                startActivity(intent3);
             }
         });
 
         aviones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent4 = new Intent(AdministradorActivity.this, AgregarAviones.class);
+                startActivity(intent4);
             }
         });
-
-
 
 
     }

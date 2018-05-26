@@ -13,7 +13,7 @@ import java.net.URLConnection;
  */
 
 public class Coneccion {
-    public String url="http://172.17.29.170:8080/MovilServlets/ServletAereopuerto";
+    public String url="http://192.168.0.107:8080/MovilServlets/ServletAereopuerto";
     public String getResultFromServlet(String text) {
         text=url+text;
         String result = "";
