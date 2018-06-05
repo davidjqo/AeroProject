@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/admin1"/>
+
         <Button
             android:id="@+id/rutas"
             android:layout_width="match_parent"
@@ -47,5 +48,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/admin4"/>
+
+        <Button
+            android:id="@+id/salirBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salir" />
   </LinearLayout>
 </RelativeLayout>

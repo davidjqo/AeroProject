@@ -87,6 +87,25 @@ public class CuentaFragment extends Fragment {
         contra = view.findViewById(R.id.contrasena);
         ingresar = view.findViewById(R.id.entrarbtn);
 
+        if(Usuario.getInstance().id>-1){
+            mail.setText(Usuario.getInstance().mail);
+            contra.setText(Usuario.getInstance().contra);
+            ingresar.setText("Salir");
+            ingresar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cerrarSesion();
+                }
+            });
+        }
+        else{
+            ingresar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    iniciarSesion();
+                }
+            });
+        }
         Button crearCuentabtn = (Button) view.findViewById(R.id.registrobtn);
         crearCuentabtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,17 +114,13 @@ public class CuentaFragment extends Fragment {
                 startActivity(in);
             }
         });
-
-        ingresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                iniciarSesion();
-            }
-        });
-
         return view;
     }
-
+    public void cerrarSesion(){
+        Usuario.reset();
+        Intent in = new Intent(getActivity(), SeccionPublica.class);
+        startActivity(in);
+    }
     public void iniciarSesion() {
         inicializar();
         if (!validar()) {
@@ -220,10 +235,28 @@ public class CuentaFragment extends Fragment {
         protected void onPostExecute(String value) {
             switch (accion) {
                 case "iniciarSesion":
-                    Toast.makeText(getActivity(), "Se ha iniciado la sesión", Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONArray jsonArray = new JSONArray(value);
+
+                        if (jsonArray.length()>0) {
+                            Toast.makeText(getActivity(), "Se ha iniciado la sesión", Toast.LENGTH_SHORT).show();
+                            Usuario.getInstance().id=jsonArray.getJSONObject(0).getInt("id");
+                            Usuario.getInstance().nombre=jsonArray.getJSONObject(0).getString("nombre");
+                            Usuario.getInstance().rol=jsonArray.getJSONObject(0).getInt("rol");
+                            Intent admin;
+                            if(Usuario.getInstance().rol==1)
+                                admin = new Intent(getActivity(), AdministradorActivity.class);
+                            else
+                                admin = new Intent(getActivity(), SeccionPublica.class);
+                            startActivity(admin);
+                            } else {
+                            Toast.makeText(getActivity(), "Datos no validos", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        Toast.makeText(getActivity(), "Vuelva a intentarlo", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
                     bandera = false;
-                    Intent admin = new Intent(getActivity(), AdministradorActivity.class);
-                    startActivity(admin);
                     break;
             }
             progressDialog.dismiss();

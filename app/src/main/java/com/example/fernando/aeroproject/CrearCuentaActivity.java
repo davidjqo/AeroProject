@@ -2,6 +2,7 @@ package com.example.fernando.aeroproject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
             Toast.makeText(this, "Registro ha fallado", Toast.LENGTH_SHORT).show();
         } else {
             tarea = new Tarea();
-            tarea.execute("registrarUsuario", cedula, nombre, contrasena, email, telefono, "1");
+            tarea.execute("registrarUsuario", cedula, nombre, contrasena, email, telefono, "2");
         }
     }
 
@@ -201,7 +202,28 @@ public class CrearCuentaActivity extends AppCompatActivity {
         protected void onPostExecute(String value) {
             switch (accion) {
                 case "registrarUsuario":
-                    Toast.makeText(context, "Usuario agregado con éxito", Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONArray jsonArray = new JSONArray(value);
+
+                        if (jsonArray.length()>0) {
+                            Toast.makeText(context, "Usuario agregado con éxito", Toast.LENGTH_SHORT).show();
+                            Usuario.getInstance().id=jsonArray.getJSONObject(0).getInt("id");
+                            Usuario.getInstance().nombre=jsonArray.getJSONObject(0).getString("nombre");
+                            Usuario.getInstance().rol=jsonArray.getJSONObject(0).getInt("rol");
+                            Intent admin;
+                            if(Usuario.getInstance().rol==1)
+                                admin = new Intent(context, AdministradorActivity.class);
+                            else
+                                admin = new Intent(context, SeccionPublica.class);
+                            startActivity(admin);
+                        } else {
+                            Toast.makeText(context, "No se pudo crear el usuario", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    catch (JSONException e) {
+                        Toast.makeText(context, "Vuelva a intenntarlo", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
                     break;
                 case "ejemplo si devuelve algo": //si devuelve algo se guarda en un arreglo json
                     JSONArray jsonResponse;

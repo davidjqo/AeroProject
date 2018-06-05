@@ -18,6 +18,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.Calendar;
 
 /**
@@ -176,18 +179,22 @@ public class VuelosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Context context = getActivity();
+                if(validar()==true) {
+                    if (idaVuelta.isChecked()) {
+                        buscarVueloIdaVuelta();
+                    }
+                    if (ida.isChecked()) {
+                        buscarVueloIda();
+                    } else if (idaVuelta.isChecked() == false && ida.isChecked() == false) {
+                        CharSequence text = "Seleccione una opción...";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                }
+                else
+                    Toast.makeText(getActivity(), "Datos incorrectos", Toast.LENGTH_SHORT).show();
 
-                if (idaVuelta.isChecked()) {
-                    buscarVueloIdaVuelta();
-                }
-                if (ida.isChecked()) {
-                    buscarVueloIda();
-                } else if (idaVuelta.isChecked() == false && ida.isChecked() == false) {
-                    CharSequence text = "Seleccione una opción...";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                }
             }
         });
         return view;
@@ -215,12 +222,12 @@ public class VuelosFragment extends Fragment {
 
     public boolean validar() {
         boolean valid = true;
-        if (sali.isEmpty()) {
-            salida.setError("Ingrese la ciudad de origen");
+        if(Usuario.getInstance().id==-1) {
+            Toast.makeText(getActivity(), "Inicie sesión primero", Toast.LENGTH_SHORT).show();
             valid = false;
         }
-        if (dest.isEmpty()) {
-            destino.setError("Ingrese la ciudad de destino");
+        if(cantidad.getText().length()==0){
+            cantidad.setError("Especifique la cantidad de pasajeros");
             valid = false;
         }
         if (cant > 9) {
@@ -289,6 +296,7 @@ public class VuelosFragment extends Fragment {
      */
     class Tarea extends AsyncTask<String, Void, String> {
         String accion = "";
+        int cantidad=0;
         /**
          * Ventana que bloqueara la pantalla del movil hasta recibir respuesta del servidor
          */
@@ -321,6 +329,7 @@ public class VuelosFragment extends Fragment {
                     text += "&salida=" + values[2];
                     text += "&destino=" + values[3];
                     text += "&cant=" + values[4];
+                    cantidad=Integer.parseInt(values[4]);
                     break;
             }
             return coneccion.getResultFromServlet(text);
@@ -333,9 +342,29 @@ public class VuelosFragment extends Fragment {
         protected void onPostExecute(String value) {
             switch (accion) {
                 case "buscarVueloIda":
-                    Toast.makeText(getActivity(), "Correcto!", Toast.LENGTH_SHORT).show();
-                    Intent pagar = new Intent(getActivity(), MetodoPago.class);
-                    startActivity(pagar);
+                    String vuelo="";
+                    try {
+                        JSONArray arr = new JSONArray(value);
+                        if(arr.length()>0) {
+                            for (int i = 0; i < arr.length(); i++) {
+                                vuelo = arr.getJSONObject(i).toString();
+                            }
+                            if(Usuario.getInstance().rol>-1) {
+                                Toast.makeText(getActivity(), "Correcto!", Toast.LENGTH_SHORT).show();
+                                Intent pagar = new Intent(getActivity(), MetodoPago.class);
+                                pagar.putExtra("Vuelo", vuelo);
+                                pagar.putExtra("cantidad",cantidad);
+                                startActivity(pagar);
+                            }
+                            else{
+                                Toast.makeText(getActivity(), "Inicie sesion Primero", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else
+                            Toast.makeText(getActivity(), "Vuelo no encontrado", Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
             progressDialog.dismiss();

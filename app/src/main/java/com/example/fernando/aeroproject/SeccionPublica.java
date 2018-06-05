@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 public class SeccionPublica extends AppCompatActivity implements View.OnClickListener, AeroFragment.OnFragmentInteractionListener, VuelosFragment.OnFragmentInteractionListener,
@@ -20,6 +21,9 @@ public class SeccionPublica extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seccion_publica);
+
+
+        setTitle(Usuario.getInstance().nombre);
 
 //Para iniciar la app con el fragmento de vuelos.
         VuelosFragment fragmento1 = new VuelosFragment();

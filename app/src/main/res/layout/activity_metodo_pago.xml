@@ -55,19 +55,6 @@
             android:orientation="vertical"
             android:id="@+id/linearLayout">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nombre (a como sale en la tarjeta)" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -75,6 +62,7 @@
                 android:text="Número de tarjeta" />
 
             <EditText
+                android:id="@+id/tnumero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -92,21 +80,21 @@
                     android:text="Fecha de Expiración" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/syear"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
                     android:layout_below="@+id/textView2"
                     android:layout_marginLeft="17dp"
                     android:layout_marginStart="17dp"
                     android:layout_marginTop="12dp"
-                    android:layout_toEndOf="@+id/spinner2"
-                    android:layout_toRightOf="@+id/spinner2" />
+                    android:layout_toEndOf="@+id/smonth"
+                    android:layout_toRightOf="@+id/smonth" />
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/smonth"
                     android:layout_width="100dp"
                     android:layout_height="55dp"
-                    android:layout_alignBottom="@+id/spinner"
+                    android:layout_alignBottom="@+id/syear"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginLeft="14dp"
@@ -118,12 +106,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/spinner"
+                    android:layout_below="@+id/syear"
                     android:layout_marginTop="11dp"
                     android:text="Código de seguridad (3 números atras, AMEX 4 adelante)" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/tseguridad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -140,8 +128,8 @@
                     android:layout_below="@+id/textView3"
                     android:layout_marginLeft="19dp"
                     android:layout_marginStart="19dp"
-                    android:layout_toEndOf="@+id/editText2"
-                    android:layout_toRightOf="@+id/editText2"
+                    android:layout_toEndOf="@+id/tseguridad"
+                    android:layout_toRightOf="@+id/tseguridad"
                     app:srcCompat="@drawable/codigo" />
 
                 <ImageView
@@ -154,27 +142,37 @@
                     app:srcCompat="@drawable/amexseguridad" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/finalizarBtn"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="0dp"
-                    android:layout_toEndOf="@+id/spinner2"
-                    android:layout_toRightOf="@+id/spinner2"
+                    android:layout_toEndOf="@+id/smonth"
+                    android:layout_toRightOf="@+id/smonth"
                     android:text="Finalizar" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/cancelarBtn"
                     android:layout_width="100dp"
                     android:layout_height="130dp"
-                    android:layout_alignBaseline="@+id/button"
-                    android:layout_alignBottom="@+id/button"
+                    android:layout_alignBaseline="@+id/finalizarBtn"
+                    android:layout_alignBottom="@+id/finalizarBtn"
                     android:layout_alignLeft="@+id/imageView"
                     android:layout_alignStart="@+id/imageView"
                     android:text="Cancelar" />
             </RelativeLayout>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/vueloTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/mastercard"
+            android:layout_marginTop="18dp"
+            android:text="No se encontrńingun vuelo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
     </RelativeLayout>
 
