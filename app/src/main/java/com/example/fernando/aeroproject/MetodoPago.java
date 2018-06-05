@@ -193,7 +193,7 @@ public class MetodoPago extends AppCompatActivity {
                         }
                         else
                             Toast.makeText(context, "Reserva no efectuada", Toast.LENGTH_SHORT).show();
-                        finish();  
+                        finish();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

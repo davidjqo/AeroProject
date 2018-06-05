@@ -31,7 +31,7 @@
             android:id="@+id/tipoaviones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/admin1"/>
+            android:text="Ver Aviones"/>
 
         <Button
             android:id="@+id/rutas"
@@ -42,12 +42,12 @@
             android:id="@+id/horarios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/admin3"/>
+            android:text="Agregar Horarios"/>
         <Button
             android:id="@+id/aviones"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/admin4"/>
+            android:text="Agregar Aviones"/>
 
         <Button
             android:id="@+id/salirBtn"
